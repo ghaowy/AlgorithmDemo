@@ -10,8 +10,50 @@ import java.util.Arrays;
 public class MergeSortDemo {
 
     public static void main(String[] args) {
-        int[] newArr = mergeSort(new int[]{5, 1, 4, 2, 51, 69, 48, 20});
+//        int[] newArr = mergeSort(new int[]{5, 1, 4, 2, 51, 69, 48, 20});
+        int[] newArr = mergeSort1(new int[]{5, 1, 4, 2, 51, 69, 48, 20});
+
         System.out.println(Arrays.toString(newArr));
+    }
+
+    private static int[] mergeSort1(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+        if (arr.length == 1) {
+            return arr;
+        }
+
+        int[] leftArr = mergeSort1(Arrays.copyOfRange(arr, 0, arr.length / 2));
+        int[] rightArr = mergeSort1(Arrays.copyOfRange(arr, arr.length / 2, arr.length));
+
+
+        int length = leftArr.length + rightArr.length;
+        int[] newArr = new int[length];
+        int leftIndex = 0;
+        int rightIndex = 0;
+
+        for (int i = 0; i < length; i++) {
+            if (leftIndex >= leftArr.length) {
+                newArr[i] = rightArr[rightIndex];
+                rightIndex++;
+                continue;
+            }
+            if (rightIndex >= rightArr.length) {
+                newArr[i] = leftArr[leftIndex];
+                leftIndex++;
+                continue;
+            }
+
+            if (leftArr[leftIndex] < rightArr[rightIndex]) {
+                newArr[i] = leftArr[leftIndex];
+                leftIndex++;
+            } else {
+                newArr[i] = rightArr[rightIndex];
+                rightIndex++;
+            }
+        }
+        return newArr;
     }
 
 
