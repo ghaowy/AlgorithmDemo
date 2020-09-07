@@ -87,9 +87,11 @@ public class TreeNodeDemo {
      * @param node
      */
     public static void afterOrder(TreeNode node) {
-        if (node == null) {
+        if (node == null || node == null) {
             return;
         }
+
+
         Stack<TreeNode> nodeStack = new Stack<>();
         TreeNode currentNode = node;
         TreeNode pre = null;
