@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.ListIterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author : gongh
@@ -55,6 +56,10 @@ class HashMapSource {
 
 
         SparseArray<String> stringSparseArray = new SparseArray<>();
+
+        ConcurrentHashMap<String, String> strConCurrentHashMap = new ConcurrentHashMap<>();
+        strConCurrentHashMap.put("hha" ,"fuck");
+        strConCurrentHashMap.get("hha");
 
 
     }
